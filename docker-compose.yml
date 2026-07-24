@@ -1,0 +1,25 @@
+services:
+  app:
+    build:
+      context: .
+    container_name: simay-birthday-app
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      PORT: 3000
+      HOSTNAME: 0.0.0.0
+    ports:
+      - "3000:3000"
+
+  cloudflared:
+    image: cloudflare/cloudflared:latest
+    container_name: simay-birthday-tunnel
+    restart: unless-stopped
+    depends_on:
+      - app
+    env_file:
+      - path: .env
+        required: false
+    environment:
+      TUNNEL_TOKEN: ${TUNNEL_TOKEN:-}
+    command: tunnel --no-autoupdate run
