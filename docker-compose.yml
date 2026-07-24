@@ -17,9 +17,6 @@ services:
     restart: unless-stopped
     depends_on:
       - app
-    env_file:
-      - path: .env
-        required: false
     environment:
-      TUNNEL_TOKEN: ${TUNNEL_TOKEN:-}
+      TUNNEL_TOKEN: ${TUNNEL_TOKEN:?Set TUNNEL_TOKEN in .env}
     command: tunnel --no-autoupdate run
