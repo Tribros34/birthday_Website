@@ -8,6 +8,7 @@ import type { SiteConfig } from "@/types/experience";
 
 type FinalSectionProps = {
   copy: SiteConfig["copy"];
+  finalImageSrc?: string;
 };
 
 const stars = Array.from({ length: 26 }, (_, index) => ({
@@ -18,7 +19,7 @@ const stars = Array.from({ length: 26 }, (_, index) => ({
   delay: (index % 7) * 0.35,
 }));
 
-export function FinalSection({ copy }: FinalSectionProps) {
+export function FinalSection({ copy, finalImageSrc }: FinalSectionProps) {
   const bodyLines = copy.finalBody
     .split(/\n+/)
     .map((line) => line.trim())
@@ -55,6 +56,24 @@ export function FinalSection({ copy }: FinalSectionProps) {
               <p key={`${line}-${index}`}>{line}</p>
             ))}
           </div>
+          {finalImageSrc ? (
+            <motion.figure
+              className="mx-auto mt-10 w-full max-w-[min(78vw,21rem)] overflow-hidden rounded-[1.05rem] border border-white/70 bg-white/48 p-2 shadow-[0_24px_70px_rgba(122,56,88,0.18)] backdrop-blur-sm"
+              initial={{ opacity: 0, y: 18, scale: 0.97 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              viewport={{ once: true, amount: 0.5 }}
+              transition={{ delay: 0.14, duration: 0.82, ease: [0.22, 1, 0.36, 1] }}
+            >
+              <Image
+                src={finalImageSrc}
+                alt="Aile anısı"
+                width={923}
+                height={2048}
+                sizes="(max-width: 768px) 78vw, 21rem"
+                className="h-auto w-full rounded-[0.75rem] object-contain"
+              />
+            </motion.figure>
+          ) : null}
           <motion.div
             className="relative mx-auto mt-12 h-44 w-72 max-w-[82vw] md:h-56 md:w-96"
             initial={{ opacity: 0, y: 16, scale: 0.96 }}

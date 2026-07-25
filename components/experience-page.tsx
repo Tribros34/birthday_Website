@@ -239,7 +239,7 @@ export function ExperiencePage({ config, assets }: ExperiencePageProps) {
             extraImageSrc={assets.schoolExtraImageSrc}
           />
 
-          <FinalSection copy={config.copy} />
+          <FinalSection copy={config.copy} finalImageSrc={assets.finalImageSrc} />
 
           <div className="pointer-events-none fixed bottom-4 left-1/2 z-40 hidden -translate-x-1/2 items-center gap-2 rounded-full border border-white/65 bg-white/55 px-4 py-2 text-xs text-muted shadow-[0_10px_36px_rgba(61,61,61,0.08)] backdrop-blur-md md:flex">
             <Heart size={13} className="fill-primary text-primary" />

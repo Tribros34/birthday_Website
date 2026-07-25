@@ -77,7 +77,10 @@ async function getPhotoAssets() {
   const photosDir = path.join(process.cwd(), "assets", "photos");
   const files = await listFiles(photosDir);
   const imageFiles = files.filter(
-    (file) => imageExtensions.has(path.extname(file).toLowerCase()) && !isSchoolExtraImage(file),
+    (file) =>
+      imageExtensions.has(path.extname(file).toLowerCase()) &&
+      !isSchoolExtraImage(file) &&
+      !isFinalImage(file),
   );
 
   const photos = await Promise.all(
@@ -117,6 +120,10 @@ function isSchoolExtraImage(fileName: string) {
   return fileName.toLowerCase().includes("chatgpt image");
 }
 
+function isFinalImage(fileName: string) {
+  return fileName.toLowerCase().includes("son foot");
+}
+
 async function getSchoolExtraImage() {
   const photosDir = path.join(process.cwd(), "assets", "photos");
   const files = await listFiles(photosDir);
@@ -127,12 +134,23 @@ async function getSchoolExtraImage() {
   return fileName ? mediaUrl("photos", fileName) : undefined;
 }
 
+async function getFinalImage() {
+  const photosDir = path.join(process.cwd(), "assets", "photos");
+  const files = await listFiles(photosDir);
+  const fileName = files.find(
+    (file) => imageExtensions.has(path.extname(file).toLowerCase()) && isFinalImage(file),
+  );
+
+  return fileName ? mediaUrl("photos", fileName) : undefined;
+}
+
 export async function getAssets(): Promise<ExperienceAssets> {
-  const [photos, musicSrc, schoolLogoSrc, schoolExtraImageSrc] = await Promise.all([
+  const [photos, musicSrc, schoolLogoSrc, schoolExtraImageSrc, finalImageSrc] = await Promise.all([
     getPhotoAssets(),
     firstAsset("music", audioExtensions),
     firstAsset("school", logoExtensions),
     getSchoolExtraImage(),
+    getFinalImage(),
   ]);
 
   return {
@@ -140,5 +158,6 @@ export async function getAssets(): Promise<ExperienceAssets> {
     musicSrc,
     schoolLogoSrc,
     schoolExtraImageSrc,
+    finalImageSrc,
   };
 }

@@ -47,4 +47,5 @@ export type ExperienceAssets = {
   musicSrc?: string;
   schoolLogoSrc?: string;
   schoolExtraImageSrc?: string;
+  finalImageSrc?: string;
 };
