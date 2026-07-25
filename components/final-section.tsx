@@ -20,6 +20,7 @@ const stars = Array.from({ length: 26 }, (_, index) => ({
 }));
 
 export function FinalSection({ copy, finalImageSrc }: FinalSectionProps) {
+  const finalPhotoSrc = finalImageSrc ?? "/api/media/photos/son%20foot.jpeg";
   const bodyLines = copy.finalBody
     .split(/\n+/)
     .map((line) => line.trim())
@@ -56,24 +57,23 @@ export function FinalSection({ copy, finalImageSrc }: FinalSectionProps) {
               <p key={`${line}-${index}`}>{line}</p>
             ))}
           </div>
-          {finalImageSrc ? (
-            <motion.figure
-              className="mx-auto mt-10 w-full max-w-[min(78vw,21rem)] overflow-hidden rounded-[1.05rem] border border-white/70 bg-white/48 p-2 shadow-[0_24px_70px_rgba(122,56,88,0.18)] backdrop-blur-sm"
-              initial={{ opacity: 0, y: 18, scale: 0.97 }}
-              whileInView={{ opacity: 1, y: 0, scale: 1 }}
-              viewport={{ once: true, amount: 0.5 }}
-              transition={{ delay: 0.14, duration: 0.82, ease: [0.22, 1, 0.36, 1] }}
-            >
-              <Image
-                src={finalImageSrc}
-                alt="Aile anısı"
-                width={923}
-                height={2048}
-                sizes="(max-width: 768px) 78vw, 21rem"
-                className="h-auto w-full rounded-[0.75rem] object-contain"
-              />
-            </motion.figure>
-          ) : null}
+          <motion.figure
+            className="mx-auto mt-10 w-full max-w-[min(78vw,21rem)] overflow-hidden rounded-[1.05rem] border border-white/70 bg-white/48 p-2 shadow-[0_24px_70px_rgba(122,56,88,0.18)] backdrop-blur-sm"
+            initial={{ opacity: 0, y: 18, scale: 0.97 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            viewport={{ once: true, amount: 0.5 }}
+            transition={{ delay: 0.14, duration: 0.82, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <Image
+              src={finalPhotoSrc}
+              alt="Aile anısı"
+              width={923}
+              height={2048}
+              sizes="(max-width: 768px) 78vw, 21rem"
+              className="h-auto w-full rounded-[0.75rem] object-contain"
+              unoptimized
+            />
+          </motion.figure>
           <motion.div
             className="relative mx-auto mt-12 h-44 w-72 max-w-[82vw] md:h-56 md:w-96"
             initial={{ opacity: 0, y: 16, scale: 0.96 }}
@@ -90,6 +90,7 @@ export function FinalSection({ copy, finalImageSrc }: FinalSectionProps) {
               height={512}
               sizes="(max-width: 768px) 82vw, 24rem"
               className="relative h-full w-full object-contain drop-shadow-[0_24px_42px_rgba(184,89,118,0.24)]"
+              unoptimized
             />
           </motion.div>
         </motion.div>
