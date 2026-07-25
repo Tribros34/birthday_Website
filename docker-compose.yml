@@ -18,5 +18,5 @@ services:
     depends_on:
       - app
     environment:
-      TUNNEL_TOKEN: ${TUNNEL_TOKEN:?Set TUNNEL_TOKEN in .env}
+      TUNNEL_TOKEN: ${TUNNEL_TOKEN:-}
     command: tunnel --no-autoupdate run
