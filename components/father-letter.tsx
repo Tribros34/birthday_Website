@@ -89,7 +89,7 @@ export function FatherLetter({ letter, father, onOpen, onClose }: FatherLetterPr
         whileTap={shouldReduceMotion ? undefined : { scale: 0.985 }}
         transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
         onClick={handleOpen}
-        aria-label="Babamdan bir mektup"
+        aria-label="Babandan bir mektup"
       >
         <div className="absolute inset-x-4 bottom-0 h-52 rounded-[1.4rem] bg-[#F8F3E9] shadow-[0_34px_90px_rgba(184,89,118,0.22)]" />
         <div className="absolute inset-x-4 bottom-0 h-52 overflow-hidden rounded-[1.4rem] border border-white/80 bg-[linear-gradient(145deg,#FFFDF8,#F8F3E9)]">
@@ -103,8 +103,8 @@ export function FatherLetter({ letter, father, onOpen, onClose }: FatherLetterPr
             <Heart size={19} className="fill-white" />
           </div>
         </div>
-        <p className="absolute -bottom-12 left-1/2 -translate-x-1/2 text-sm font-medium text-muted">
-          Babamdan bir mektup
+        <p className="absolute -bottom-14 left-1/2 w-full -translate-x-1/2 text-center text-lg font-semibold text-muted md:text-xl">
+          Babandan bir mektup
         </p>
       </motion.button>
 

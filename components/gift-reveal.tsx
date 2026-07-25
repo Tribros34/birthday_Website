@@ -60,6 +60,7 @@ export function GiftReveal({ birthdayTitle, name, isOpen, shouldReduceMotion }: 
           <p className="text-sm font-medium uppercase text-accent">{birthdayTitle}</p>
           <h1 className="mt-3 font-serif text-[clamp(3rem,12vw,7rem)] leading-none text-text">
             {name}
+            {"'ım"}
           </h1>
         </motion.div>
       </div>
