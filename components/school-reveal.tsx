@@ -10,9 +10,10 @@ type SchoolRevealProps = {
   copy: SiteConfig["copy"];
   school: string;
   logoSrc?: string;
+  extraImageSrc?: string;
 };
 
-export function SchoolReveal({ copy, school, logoSrc }: SchoolRevealProps) {
+export function SchoolReveal({ copy, school, logoSrc, extraImageSrc }: SchoolRevealProps) {
   const announcement =
     school.toLocaleLowerCase("tr-TR") === "kalem vakfı okulları"
       ? "Seni Kalem Vakfı Okullarına yazdırdım"
@@ -95,6 +96,25 @@ export function SchoolReveal({ copy, school, logoSrc }: SchoolRevealProps) {
                 transition={{ delay: 6.25, duration: 1.15, ease: [0.22, 1, 0.36, 1] }}
               />
             </motion.svg>
+
+            {extraImageSrc ? (
+              <motion.figure
+                className="mt-7 w-full max-w-[min(62vw,13rem)] overflow-hidden rounded-[0.85rem] border border-white/32 bg-white/14 p-1.5 shadow-[0_20px_54px_rgba(122,56,88,0.26)] backdrop-blur-md md:max-w-[15rem]"
+                initial={{ opacity: 0, y: 18, scale: 0.97 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                viewport={{ once: true, amount: 0.45 }}
+                transition={{ delay: 6.9, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+              >
+                <Image
+                  src={extraImageSrc}
+                  alt={`${school} sürprizi`}
+                  width={1055}
+                  height={1491}
+                  sizes="(max-width: 640px) 62vw, 15rem"
+                  className="h-auto w-full rounded-[0.65rem] object-contain"
+                />
+              </motion.figure>
+            ) : null}
           </div>
           <p className="mt-10 text-base text-white/64 md:text-lg">{copy.pride}</p>
         </motion.div>

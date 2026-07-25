@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 
 import { CelebrationField } from "@/components/celebration-field";
@@ -18,6 +19,11 @@ const stars = Array.from({ length: 26 }, (_, index) => ({
 }));
 
 export function FinalSection({ copy }: FinalSectionProps) {
+  const bodyLines = copy.finalBody
+    .split(/\n+/)
+    .map((line) => line.trim())
+    .filter(Boolean);
+
   return (
     <section className="relative grid min-h-screen overflow-hidden bg-[linear-gradient(160deg,#FFF7F4_0%,#F4B8C8_38%,#C7BDF4_100%)] px-6 py-28 text-text">
       <CelebrationField density="full" className="opacity-75" />
@@ -44,7 +50,29 @@ export function FinalSection({ copy }: FinalSectionProps) {
           transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
         >
           <h2 className="font-serif text-[clamp(3rem,10vw,7rem)] leading-[1.04]">{copy.finalTitle}</h2>
-          <p className="mt-8 text-lg text-text/70 md:text-2xl">{copy.finalBody}</p>
+          <div className="mx-auto mt-8 max-w-3xl space-y-5 text-base leading-8 text-text/74 md:text-xl md:leading-9">
+            {bodyLines.map((line, index) => (
+              <p key={`${line}-${index}`}>{line}</p>
+            ))}
+          </div>
+          <motion.div
+            className="relative mx-auto mt-12 h-44 w-72 max-w-[82vw] md:h-56 md:w-96"
+            initial={{ opacity: 0, y: 16, scale: 0.96 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            viewport={{ once: true, amount: 0.7 }}
+            transition={{ delay: 0.2, duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+            aria-hidden="true"
+          >
+            <span className="absolute inset-x-8 bottom-5 h-10 rounded-full bg-[#B85A75]/18 blur-2xl" />
+            <Image
+              src="/api/media/hero/rose-bouquet.png"
+              alt=""
+              width={768}
+              height={512}
+              sizes="(max-width: 768px) 82vw, 24rem"
+              className="relative h-full w-full object-contain drop-shadow-[0_24px_42px_rgba(184,89,118,0.24)]"
+            />
+          </motion.div>
         </motion.div>
       </div>
     </section>

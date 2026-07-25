@@ -153,22 +153,37 @@ export function ExperiencePage({ config, assets }: ExperiencePageProps) {
           >
             <p className="text-base text-muted md:text-lg">{config.copy.introSecond}</p>
             <button
-              className="group/gift relative mt-1 h-52 w-52 cursor-pointer border-0 bg-transparent p-0 outline-none focus-visible:ring-2 focus-visible:ring-accent/70 md:h-60 md:w-60"
+              className="group/gift relative mt-2 h-36 w-44 cursor-pointer border-0 bg-transparent p-0 outline-none focus-visible:ring-2 focus-visible:ring-accent/70"
               type="button"
               onClick={handleStart}
               aria-label={config.copy.openGift}
             >
-              <span className="absolute inset-8 rounded-full bg-accent/20 blur-3xl transition group-hover/gift:scale-110" />
+              <div className="absolute left-1/2 top-2 h-12 w-48 -translate-x-1/2 rounded-[1.2rem] border border-white/70 bg-[linear-gradient(135deg,#F3A6BB,#E8C8D1_48%,#D9D2F2)] shadow-[0_22px_52px_rgba(184,89,118,0.18)]" />
+              <div className="absolute bottom-0 left-1/2 h-28 w-40 -translate-x-1/2 rounded-[1.35rem] border border-white/75 bg-white/72 shadow-[0_24px_60px_rgba(184,89,118,0.16)] backdrop-blur transition group-hover/gift:-translate-y-1" />
+              <div className="absolute bottom-0 left-1/2 h-28 w-7 -translate-x-1/2 rounded-full bg-accent/80" />
+              <div className="absolute bottom-10 left-1/2 h-7 w-40 -translate-x-1/2 bg-secondary/70" />
+              <div className="absolute bottom-8 left-1/2 grid h-16 w-16 -translate-x-1/2 place-items-center rounded-full border border-white bg-white/82 shadow-[0_14px_34px_rgba(61,61,61,0.1)]">
+                <span className="font-serif text-4xl leading-none text-[#B85A75]">S</span>
+              </div>
+            </button>
+            <motion.div
+              className="relative -mt-1 h-36 w-36 md:h-44 md:w-44"
+              initial={{ opacity: 0, y: 14, scale: 0.96 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ delay: shouldReduceMotion ? 0 : 3.2, duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+              aria-hidden="true"
+            >
+              <span className="absolute inset-8 rounded-full bg-accent/20 blur-2xl" />
               <Image
                 src="/api/media/hero/birthday-cake.png"
                 alt=""
-                width={480}
-                height={480}
+                width={360}
+                height={360}
                 className="relative h-full w-full object-contain drop-shadow-[0_28px_48px_rgba(184,89,118,0.28)] transition duration-500 group-hover/gift:-translate-y-1 group-hover/gift:scale-[1.03]"
                 draggable={false}
                 priority
               />
-            </button>
+            </motion.div>
             <motion.button
               className="group relative inline-flex min-h-16 items-center gap-3 rounded-full border-2 border-white/85 bg-[#B85A75] px-9 py-4 text-base font-bold text-white shadow-[0_22px_70px_rgba(184,89,118,0.42)] backdrop-blur-md transition hover:-translate-y-1 hover:bg-[#A94B69] focus:outline-none focus:ring-4 focus:ring-accent/45 md:text-lg"
               type="button"
@@ -221,6 +236,7 @@ export function ExperiencePage({ config, assets }: ExperiencePageProps) {
             copy={config.copy}
             school={config.school || "Yeni okulun"}
             logoSrc={assets.schoolLogoSrc}
+            extraImageSrc={assets.schoolExtraImageSrc}
           />
 
           <FinalSection copy={config.copy} />
