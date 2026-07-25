@@ -9,7 +9,7 @@ services:
       PORT: 3000
       HOSTNAME: 0.0.0.0
     ports:
-      - "3000:3000"
+      - "3001:3000"
 
   cloudflared:
     image: cloudflare/cloudflared:latest
