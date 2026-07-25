@@ -48,7 +48,7 @@ export function FinalSection({ copy, finalImageSrc }: FinalSectionProps) {
         <motion.div
           initial={{ opacity: 0, y: 18, filter: "blur(10px)" }}
           whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-          viewport={{ once: true, amount: 0.7 }}
+          viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
         >
           <h2 className="font-serif text-[clamp(3rem,10vw,7rem)] leading-[1.04]">{copy.finalTitle}</h2>
@@ -61,7 +61,7 @@ export function FinalSection({ copy, finalImageSrc }: FinalSectionProps) {
             className="mx-auto mt-10 w-full max-w-[min(78vw,21rem)] overflow-hidden rounded-[1.05rem] border border-white/70 bg-white/48 p-2 shadow-[0_24px_70px_rgba(122,56,88,0.18)] backdrop-blur-sm"
             initial={{ opacity: 0, y: 18, scale: 0.97 }}
             whileInView={{ opacity: 1, y: 0, scale: 1 }}
-            viewport={{ once: true, amount: 0.5 }}
+            viewport={{ once: true, amount: 0.2 }}
             transition={{ delay: 0.14, duration: 0.82, ease: [0.22, 1, 0.36, 1] }}
           >
             <Image
@@ -78,7 +78,7 @@ export function FinalSection({ copy, finalImageSrc }: FinalSectionProps) {
             className="relative mx-auto mt-12 h-44 w-72 max-w-[82vw] md:h-56 md:w-96"
             initial={{ opacity: 0, y: 16, scale: 0.96 }}
             whileInView={{ opacity: 1, y: 0, scale: 1 }}
-            viewport={{ once: true, amount: 0.7 }}
+            viewport={{ once: true, amount: 0.2 }}
             transition={{ delay: 0.2, duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
             aria-hidden="true"
           >
